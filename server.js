@@ -116,3 +116,38 @@ app.post('/collection/:collectionName/search', (req, res, next) => {
         res.json(results);
     });
 });
+// delete a single object by ID from a collection
+app.delete('/collection/:collectionName/:id', (req, res, next) => {
+    const id = req.params.id;
+    req.collection.deleteOne({ _id: new ObjectId(id) }, (e, result) => {
+        if (e) return next(e);
+        if (result.deletedCount === 1) {
+            // Return a user-friendly success message
+            res.json({ message: 'Deletion successful' });
+        } else {
+            // Return a user-friendly failure message
+            res.json({ message: 'No document found with that ID' });
+        }
+    });
+});
+
+// static file middleware to serve files from the 'statics' folder
+app.use('/statics', express.static(path.join(__dirname, 'statics')));
+
+// error handling middleware for missing static files
+app.use('/statics', (req, res, next) => {
+    var filePath = path.join(__dirname, "statics", req.url);
+    fs.stat(filePath, function(err, fileInfo) {
+        if (err || !fileInfo.isFile()) {
+            res.status(404).send("File not found!");
+        } else {
+            next();
+        }
+    });
+});
+
+// start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
