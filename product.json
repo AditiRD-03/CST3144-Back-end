@@ -1,0 +1,93 @@
+[
+    {
+      "id": 101,
+      "title": "BasketBall Club",
+      "subject": "BasketBall",
+      "location": "Dubai",
+      "price": 150,
+      "image": "images/Basketball.jpg",
+      "AvailableInventory": 10
+    },
+      {
+        "id": 102,
+        "title": "FootBall Club",
+        "subject": "FootBall",
+        "location": "Ajman",
+        "price": 160,
+        "image": "images/Football.jpg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 103,
+        "title": "Dance Club",
+        "subject": "Dance",
+        "location": "Dubai",
+        "price": 110,
+        "image": "images/Dance.jpg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 104,
+        "title": "Singing Club",
+        "subject": "Singing",
+        "location": "Dubai",
+        "price": 110,
+        "image": "images/Singing.jpg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 105,
+        "title": "Swimming Club",
+        "subject": "Swimming",
+        "location": "Sharjah",
+        "price": 150,
+        "image": "images/Swimming.jpeg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 106,
+        "title": "Badminton Club",
+        "subject": "Badminton",
+        "location": "Ajman",
+        "price": 180,
+        "image": "images/Badminton.jpg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 107,
+        "title": "Gymnastics Club",
+        "subject": "Gymnastics",
+        "location": "Dubai",
+        "price": 110,
+        "image": "images/Gymnastics.jpg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 108,
+        "title": "Karate Club",
+        "subject": "Karate",
+        "location": "Abu Dhabi",
+        "price": 100,
+        "image": "images/Karate.jpg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 109,
+        "title": "Soccer Club",
+        "subject": "Soccer",
+        "location": "Sharjah",
+        "price": 170,
+        "image": "images/Soccer.jpg",
+        "AvailableInventory": 10
+      },
+      {
+        "id": 110,
+        "title": "Photography Club",
+        "subject": "Photography",
+        "location": "Abu Dhabi",
+        "price": 110,
+        "image": "images/Photography.jpg",
+        "AvailableInventory": 10
+      }
+    ]
+    
