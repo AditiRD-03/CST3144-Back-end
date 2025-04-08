@@ -14,6 +14,7 @@ app.use((req, res, next) => {
     console.log("Request Date: " + new Date());
     next();
 });
+
 // CORS headers to allow cross-origin requests 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");  
     next();  
 });
+
 // Connect to the MongoDB database
 let db;
 MongoClient.connect('mongodb+srv://aditi:aditi@cluster0.v1bf1.mongodb.net/AfterSchoolClasses?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
@@ -82,6 +84,7 @@ app.put('/collection/:collectionName', (req, res, next) => {
     });
     res.send({ msg: 'Availability updated successfully' });
 });
+
 // search data in the collection
 app.post('/collection/:collectionName/search', (req, res, next) => {
     // Get the search query from the request body
@@ -116,6 +119,7 @@ app.post('/collection/:collectionName/search', (req, res, next) => {
         res.json(results);
     });
 });
+
 // delete a single object by ID from a collection
 app.delete('/collection/:collectionName/:id', (req, res, next) => {
     const id = req.params.id;
