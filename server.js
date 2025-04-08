@@ -82,3 +82,37 @@ app.put('/collection/:collectionName', (req, res, next) => {
     });
     res.send({ msg: 'Availability updated successfully' });
 });
+// search data in the collection
+app.post('/collection/:collectionName/search', (req, res, next) => {
+    // Get the search query from the request body
+    const searchQuery = req.body.search;  
+
+    if (!searchQuery) {
+        return res.status(400).json({ msg: "Search query is required" });
+    }
+
+    // Case-insensitive regex
+    const searchRegex = new RegExp(searchQuery, 'i');  
+
+    // query to search across multiple fields
+    const query = {
+        $or: [
+            { title: { $regex: searchRegex } },
+            { description: { $regex: searchRegex } },
+            { location: { $regex: searchRegex } },
+            { price: parseFloat(searchQuery) },
+            { availableInventory: parseInt(searchQuery) }
+        ]
+    };
+
+    // Log the search query
+    console.log("Search Query:", query);
+
+    // Search the collection with the query
+    req.collection.find(query).toArray((err, results) => {
+        if (err) return next(err);
+        // Log the search results
+        console.log("Search Results:", results);
+        res.json(results);
+    });
+});
