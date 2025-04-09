@@ -2,7 +2,7 @@ const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
 const path = require("path");
 const fs = require("fs");
-const { ObjectId } = require('mongodb'); // Import ObjectId to handle MongoDB object IDs
+const { ObjectId } = require('mongodb'); // import ObjectId to handle MongoDB object IDs
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     next();  
 });
 
-// Connect to the MongoDB database
+// connect to the MongoDB database
 let db;
 MongoClient.connect('mongodb+srv://aditi:aditi@cluster0.v1bf1.mongodb.net/AfterSchoolClasses?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
     if (err) return console.log(err);
@@ -71,7 +71,7 @@ app.post('/collection/:collectionName', (req, res) => {
 // update data in the collection
 app.put('/collection/:collectionName', (req, res, next) => {
     const updatedClasses = req.body;
-    // Update the 'availableInventory'
+    // update the 'availableInventory'
     updatedClasses.forEach(classData => {
         req.collection.updateOne(
             { id: classData.id },
@@ -108,13 +108,13 @@ app.post('/collection/:collectionName/search', (req, res, next) => {
         ]
     };
 
-    // Log the search query
+    // log the search query
     console.log("Search Query:", query);
 
-    // Search the collection with the query
+    // search the collection with the query
     req.collection.find(query).toArray((err, results) => {
         if (err) return next(err);
-        // Log the search results
+        // log the search results
         console.log("Search Results:", results);
         res.json(results);
     });
@@ -126,7 +126,7 @@ app.delete('/collection/:collectionName/:id', (req, res, next) => {
     req.collection.deleteOne({ _id: new ObjectId(id) }, (e, result) => {
         if (e) return next(e);
         if (result.deletedCount === 1) {
-            // Return a user-friendly success message
+            // return a user-friendly success message
             res.json({ message: 'Deletion successful' });
         } else {
             // Return a user-friendly failure message
